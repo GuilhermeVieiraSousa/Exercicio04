@@ -3,31 +3,58 @@
   
   <h1 class="display-1 text-center p-4">Divulgação dos cursos</h1>
   
-  <table class="table table-primary table-hover table-striped">
+  <table *ngIf="!esconder" class="table table-striped table-hover">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Nome</th>
       <th scope="col">Carga horaria</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
       <td>NodeJs</td>
       <td>94h</td>
 
     </tr>
     <tr>
-      <th scope="row">2</th>
       <td>C#</td>
       <td>60h</td>
     </tr>
     <tr>
-      <th scope="row">3</th>
       <td>JavaScript</td>
       <td>80h</td>
     </tr>
+
+    <tr *ngFor="let cursos of cursos">          
+      <td>{{cursos.nome}}</td>          
+      <td>{{cursos.duracao}}</td>        
+    </tr>
+    
+    <h1><font size="3">Adcione novos curos !</font></h1>
+    
+    <div class="row">    
+      <div class="col-md-6 form-group">      
+        
+        <label for="nomeInput">Nome do Curso</label>      
+        
+        <input type="text" class="form-control" id="nomeInput" #nomeInput placeholder="Digite aqui o nome do curso">    
+      </div>    
+      <div class="col-md-6 form-group mb-2">      
+        <label for="Idade">duração</label>      
+        <input type="text" class="form-control" id="nomeInput" #idadeInput placeholder="Digite aqui a duração do curso">    
+      </div>  
+    </div>  
+    
+    <div class="row">    
+        <button class="btn btn-primary" (click)="adicionar(nomeInput.value, idadeInput.value)"      
+        type="button">Cadastrar</button>  
+      </div>
+    
+
   </tbody>
 </table>
+<div class="row">    
+  <button class="btn btn-primary btn-block mt-3" (click)=alterarExibicao() type="button">{{textoBotao}}</button> 
+</div>
+
 </div>
